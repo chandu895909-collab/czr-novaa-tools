@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CZR NOVAA TOOLS</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<header class="navbar">
+
+  <div class="logo">
+    CZR <span>NOVAA</span>
+  </div>
+
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+  <nav id="menu">
+    <a href="#">Home</a>
+    <a href="#tools">Tools</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a href="login.html" class="login">Login</a>
+  </nav>
+
+</header>
+
+
+<!-- Hero Section -->
+
+<section class="hero">
+
+  <p class="tag">ALL IN ONE PLATFORM</p>
+
+  <h1>
+    Your Digital World.
+    <span>One Platform.</span>
+  </h1>
+
+  <p class="description">
+    PDF, Image, Video, Audio and
+    many more online tools.
+  </p>
+
+  <a href="#tools" class="main-btn">
+    Explore Tools →
+  </a>
+
+</section>
+
+
+<!-- Search -->
+
+<section class="search">
+
+  <input
+    type="search"
+    id="search"
+    placeholder="Search your tools..."
+    oninput="searchTools()"
+  >
+
+</section>
+
+
+<!-- Tools -->
+
+<section class="tools" id="tools">
+
+  <h2>Explore Our Tools</h2>
+
+  <div class="tool-grid">
+
+    <div class="tool-card" data-name="pdf compressor">
+      <div class="emoji">📄</div>
+      <h3>PDF Tools</h3>
+      <p>Compress, Merge, Split PDF</p>
+      <button onclick="openTool('pdf')">Open Tool →</button>
+    </div>
+
+    <div class="tool-card" data-name="image compressor">
+      <div class="emoji">🖼️</div>
+      <h3>Image Tools</h3>
+      <p>Compress, Resize, Convert</p>
+      <button onclick="openTool('image')">Open Tool →</button>
+    </div>
+
+    <div class="tool-card" data-name="video downloader">
+      <div class="emoji">🎬</div>
+      <h3>Video Tools</h3>
+      <p>Compress and Convert Video</p>
+      <button onclick="openTool('video')">Open Tool →</button>
+    </div>
+
+    <div class="tool-card" data-name="audio converter">
+      <div class="emoji">🎵</div>
+      <h3>Audio Tools</h3>
+      <p>Cut, Convert and Compress</p>
+      <button onclick="openTool('audio')">Open Tool →</button>
+    </div>
+
+    <div class="tool-card" data-name="text tools">
+      <div class="emoji">📝</div>
+      <h3>Text Tools</h3>
+      <p>Word Counter and Text Tools</p>
+      <button onclick="openTool('text')">Open Tool →</button>
+    </div>
+
+    <div class="tool-card" data-name="qr code generator">
+      <div class="emoji">🔳</div>
+      <h3>QR Generator</h3>
+      <p>Create your own QR Code</p>
+      <button onclick="openTool('qr')">Open Tool →</button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- Pricing -->
+
+<section class="pricing" id="pricing">
+
+  <h2>Choose Your Plan</h2>
+
+  <div class="price-card">
+
+    <h3>FREE</h3>
+    <h1>₹0</h1>
+    <p>Basic Tools Access</p>
+    <p>Limited Usage</p>
+    <button>Get Started</button>
+
+  </div>
+
+  <div class="price-card premium">
+
+    <h3>PREMIUM</h3>
+    <h1>₹99 <small>/month</small></h1>
+    <p>All Tools Access</p>
+    <p>Higher Usage Limits</p>
+    <p>Priority Processing</p>
+    <button>Coming Soon</button>
+
+  </div>
+
+</section>
+
+
+<!-- About -->
+
+<section class="about" id="about">
+
+  <h2>About CZR NOVAA</h2>
+
+  <p>
+    CZR NOVAA TOOLS is your all-in-one
+    online platform for digital tools.
+    Simple, fast and easy to use.
+  </p>
+
+</section>
+
+
+<!-- Footer -->
+
+<footer>
+
+  <h3>CZR NOVAA TOOLS</h3>
+
+  <p>© 2026 CZR NOVAA. All Rights Reserved.</p>
+
+  <p>Privacy Policy | Terms & Conditions</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
