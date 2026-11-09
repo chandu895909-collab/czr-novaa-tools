@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CZR NOVAA - PDF Merge</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 20px;
+  background: #080d18;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #111c30;
+  border: 1px solid #00c8f5;
+  border-radius: 15px;
+  text-align: center;
+}
+h1 span {
+  color: #00c8f5;
+}
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 20px 0;
+  background: white;
+  color: black;
+  border-radius: 8px;
+}
+button {
+  padding: 14px 25px;
+  background: #00c8f5;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bold;
+}
+button:disabled {
+  opacity: 0.5;
+}
+#status {
+  margin-top: 20px;
+  color: #00c8f5;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>CZR <span>NOVAA</span></h1>
+<h2>PDF Merge Tool</h2>
+
+<p>Select multiple PDF files</p>
+
+<input type="file" id="pdfFiles"
+accept="application/pdf,.pdf" multiple>
+
+<button id="mergeBtn" onclick="mergePDF()">
+Merge PDF
+</button>
+
+<p id="status"></p>
+
+</div>
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<script>
+async function mergePDF() {
+  const input = document.getElementById("pdfFiles");
+  const status = document.getElementById("status");
+  const button = document.getElementById("mergeBtn");
+
+  const files = Array.from(input.files || []);
+
+  if (files.length < 2) {
+    status.textContent = "Please select at least 2 PDF files.";
+    return;
+  }
+
+  button.disabled = true;
+  status.textContent = "Merging PDFs...";
+
+  try {
+    const mergedPdf = await PDFLib.PDFDocument.create();
+
+    for (const file of files) {
+      const bytes = await file.arrayBuffer();
+
+      const pdf = await PDFLib.PDFDocument.load(bytes);
+
+      const pages = await mergedPdf.copyPages(
+        pdf,
+        pdf.getPageIndices()
+      );
+
+      pages.forEach(page => mergedPdf.addPage(page));
+    }
+
+    const mergedBytes = await mergedPdf.save();
+
+    const blob = new Blob([mergedBytes], {
+      type: "application/pdf"
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "CZR-NOVAA-Merged.pdf";
+    link.click();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+    status.textContent = "PDF merged successfully!";
+
+  } catch (error) {
+    status.textContent = "Error: Please check your PDF files.";
+  }
+
+  button.disabled = false;
+}
+</script>
+</body>
+</html>
